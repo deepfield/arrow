@@ -208,7 +208,8 @@ class DateTimeParser(object):
         timestamp = parts.get('timestamp')
 
         if timestamp:
-            return datetime.fromtimestamp(timestamp)
+            utc_tz = tz.tzutc()
+            return datetime.fromtimestamp(timestamp, tz=utc_tz)
 
         am_pm = parts.get('am_pm')
         hour = parts.get('hour', 0)
